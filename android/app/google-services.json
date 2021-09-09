@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "101681976209",
+    "firebase_url": "https://rn-template-bd79c.firebaseio.com",
+    "project_id": "rn-template-bd79c",
+    "storage_bucket": "rn-template-bd79c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101681976209:android:17f0956106ec280ea64030",
+        "android_client_info": {
+          "package_name": "com.fullstackinterview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101681976209-kuos2no0ok7jasvkkoao4bcssfkki6vr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfdiAIvzbWDpHsmfz5eX7nJJoTVmEull0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101681976209-kuos2no0ok7jasvkkoao4bcssfkki6vr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "101681976209-bqe88jj06kpglsb1jaucd35m1hb0f4pk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.FullstackInterview"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

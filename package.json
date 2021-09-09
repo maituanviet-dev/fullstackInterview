@@ -1,0 +1,89 @@
+{
+  "name": "base.react-native",
+  "version": "0.0.1",
+  "description": "React Native Template",
+  "repository": "https://github.com/nttrung143/base.react-native",
+  "author": "Tran Hong Nhi <nhith@icts.vn>",
+  "license": "MIT",
+  "scripts": {
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "postinstall": "jetify",
+    "lint": "eslint .",
+    "ios-offline": "react-native bundle --platform ios --dev false --entry-file index.js --bundle-output ios/main.jsbundle",
+    "android-bundle": "bundletool build-apks --bundle=android/app/build/outputs/bundle/release/app.aab --output=android/app/build/outputs/bundle/release/app.apks",
+    "android-offline": "cd android && ./gradlew bundleRelease && cd ..",
+    "android-release": "react-native run-android --variant=release",
+    "pods": "cd ios/ && rm -rf Pods/ && pod install && cd ..",
+    "bootstrap": "rm -rf node_modules/ && yarn && yarn pods"
+  },
+  "dependencies": {
+    "@react-native-community/masked-view": "^0.1.11",
+    "@react-native-firebase/app": "^12.7.5",
+    "@react-native-firebase/crashlytics": "^12.7.5",
+    "@react-navigation/native": "^6.0.2",
+    "@react-navigation/stack": "^6.0.7",
+    "axios": "^0.21.4",
+    "i18next": "^20.6.1",
+    "immutable": "^4.0.0-rc.14",
+    "react": "17.0.2",
+    "react-i18next": "^11.12.0",
+    "react-native": "0.65.1",
+    "react-native-gesture-handler": "^1.10.3",
+    "react-native-reanimated": "^2.2.0",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.6.0",
+    "react-native-snackbar": "^2.4.0",
+    "react-redux": "^7.2.5",
+    "redux": "^4.1.1",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^1.1.3",
+    "reselect": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.15.5",
+    "@babel/runtime": "^7.15.4",
+    "@react-native-community/eslint-config": "^3.0.1",
+    "@types/jest": "^27.0.1",
+    "@types/node": "^16.9.0",
+    "@types/react": "^17.0.20",
+    "@types/react-native": "^0.65.0",
+    "@types/react-redux": "^7.1.18",
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "@typescript-eslint/typescript-estree": "^4.31.0",
+    "babel-jest": "^27.1.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.25.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^27.1.1",
+    "jetifier": "^2.0.0",
+    "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-eject": "^0.1.2",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.4.2"
+  },
+  "jest": {
+    "globals": {
+      "window": true,
+      "__DEV__": false
+    },
+    "preset": "react-native",
+    "setupFiles": [
+      "<rootDir>/jest/setup.js"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "transformIgnorePatterns": [
+      "node_modules/?!(react-native|react-navigation)"
+    ]
+  }
+}
