@@ -1,22 +1,28 @@
 import React from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
 
 const { width } = Dimensions.get("window");
 interface Props {
   label: string;
   summary?: string;
   bachgroundImg?: string;
+  onPress?: () => void;
 }
-const CardNews: React.FC<Props> = ({ label, summary, bachgroundImg }) => {
+const CardNews: React.FC<Props> = ({
+  label,
+  summary,
+  bachgroundImg,
+  onPress,
+}) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.containerCard}>
         <View style={styles.containerLabel}>
           <Text style={styles.text}>{label}</Text>
         </View>
       </View>
       <Text numberOfLines={1}>{summary}</Text>
-    </View>
+    </Pressable>
   );
 };
 

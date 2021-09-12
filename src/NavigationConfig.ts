@@ -4,4 +4,6 @@ export const Screens = {
   Home: "Home",
   Library: "Library",
   Quiz: "Quiz",
+  AboutUs: "AboutUs",
+  News: "News",
 };

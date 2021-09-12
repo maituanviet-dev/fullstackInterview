@@ -1,20 +1,26 @@
 import React from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, Pressable, StyleSheet, Text, View } from "react-native";
 
 interface Props {
   label: string;
   summary?: string;
   bachgroundImg?: string;
+  onPress?: () => void;
 }
-const CardSuggestion: React.FC<Props> = ({ label, summary, bachgroundImg }) => {
+const CardSuggestion: React.FC<Props> = ({
+  label,
+  summary,
+  bachgroundImg,
+  onPress,
+}) => {
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={onPress}>
       <View style={styles.containerCard}></View>
       <View style={styles.viewRight}>
         <Text>label</Text>
         <Text numberOfLines={1}>{summary}</Text>
       </View>
-    </View>
+    </Pressable>
   );
 };
 

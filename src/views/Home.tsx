@@ -42,6 +42,8 @@ const styles = StyleSheet.create({
   },
   textTitle: {
     alignSelf: "center",
+    fontSize: 18,
+    textAlign: "center",
   },
 });
 

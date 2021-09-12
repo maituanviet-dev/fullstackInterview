@@ -16,6 +16,8 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 import Library from "./views/Library";
 import Quiz from "./views/Quiz";
+import News from "./views/News";
+import AboutUs from "./views/AboutUs";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -43,6 +45,11 @@ const Tabbar: React.FC = () => {
       <Tab.Screen
         name={Screens.Quiz}
         component={Quiz}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name={Screens.AboutUs}
+        component={AboutUs}
         options={{ headerShown: false }}
       />
     </Tab.Navigator>
@@ -90,6 +97,11 @@ const AppContainer: React.FC = (props) => {
           <Stack.Screen
             name={Screens.Tabbar}
             component={Tabbar}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name={Screens.News}
+            component={News}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
