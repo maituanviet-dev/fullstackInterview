@@ -1,14 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const Question: React.FC = () => {
+const AboutUs: React.FC = () => {
   return (
     <View>
-      <Text>Question</Text>
+      <Text>AboutUs</Text>
     </View>
   );
 };
 
-export default Question;
+export default AboutUs;
 
 const styles = StyleSheet.create({});
