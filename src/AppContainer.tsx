@@ -1,20 +1,24 @@
-import React, { useMemo, useState, useCallback } from 'react';
-import { View, ActivityIndicator, StyleSheet, StatusBar } from 'react-native';
-import Snackbar, { SnackBarOptions } from 'react-native-snackbar';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { useSelector } from 'react-redux';
-import { REDUX_TYPE, LOADING_TYPE } from './redux/redux-type-saga';
-import { Record, Collection } from 'immutable';
-import { IStore } from './redux/redux-state';
-import { sGetIndicatorState } from './redux/selectors';
-import { Screens } from './NavigationConfig';
-import navigationService from './common/navigation-service';
-import App from './App';
-import { useTranslation } from 'react-i18next';
+import React, { useMemo, useState, useCallback } from "react";
+import { View, ActivityIndicator, StyleSheet, StatusBar } from "react-native";
+import Snackbar, { SnackBarOptions } from "react-native-snackbar";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useSelector } from "react-redux";
+import { REDUX_TYPE, LOADING_TYPE } from "./redux/redux-type-saga";
+import { Record, Collection } from "immutable";
+import { IStore } from "./redux/redux-state";
+import { sGetIndicatorState } from "./redux/selectors";
+import { Screens } from "./NavigationConfig";
+import navigationService from "./common/navigation-service";
+import { useTranslation } from "react-i18next";
+import Login from "./views/Login";
+import Home from "./views/Home";
+import Library from "./views/Library";
+import Quiz from "./views/Quiz";
 
 const Stack = createStackNavigator();
-
+const Tab = createBottomTabNavigator();
 const isLoadingSelector = (store: Record<IStore> & Readonly<IStore>) => {
   const count: Collection<string, any> = store.getIn([
     REDUX_TYPE,
@@ -23,7 +27,28 @@ const isLoadingSelector = (store: Record<IStore> & Readonly<IStore>) => {
   return !!count || sGetIndicatorState(store);
 };
 
-const AppContainer: React.FC = props => {
+const Tabbar: React.FC = () => {
+  return (
+    <Tab.Navigator initialRouteName={Screens.Home}>
+      <Tab.Screen
+        name={Screens.Home}
+        component={Home}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name={Screens.Library}
+        component={Library}
+        options={{ headerShown: false }}
+      />
+      <Tab.Screen
+        name={Screens.Quiz}
+        component={Quiz}
+        options={{ headerShown: false }}
+      />
+    </Tab.Navigator>
+  );
+};
+const AppContainer: React.FC = (props) => {
   const [t] = useTranslation();
 
   const [visible, setVisible] = useState(false);
@@ -32,7 +57,7 @@ const AppContainer: React.FC = props => {
   const showAlert = useCallback((options: SnackBarOptions) => {
     Snackbar.show(options);
   }, []);
-  const _updateNavigator = useCallback(navigatorRef => {
+  const _updateNavigator = useCallback((navigatorRef) => {
     navigationService.setTopLevelNavigator(navigatorRef);
   }, []);
   // memos
@@ -48,8 +73,9 @@ const AppContainer: React.FC = props => {
         <View
           style={[
             StyleSheet.absoluteFill,
-            { backgroundColor: 'rgba(0,0,0,0.7)', justifyContent: 'center' },
-          ]}>
+            { backgroundColor: "rgba(0,0,0,0.7)", justifyContent: "center" },
+          ]}
+        >
           <StatusBar barStyle="dark-content" />
           <ActivityIndicator size="large" />
         </View>
@@ -60,11 +86,11 @@ const AppContainer: React.FC = props => {
   const NavigationView = useMemo(() => {
     return (
       <NavigationContainer ref={_updateNavigator}>
-        <Stack.Navigator initialRouteName={Screens.App}>
+        <Stack.Navigator initialRouteName={Screens.Home}>
           <Stack.Screen
-            name={Screens.App}
-            component={App}
-            options={{ title: t('welcome') }}
+            name={Screens.Tabbar}
+            component={Tabbar}
+            options={{ headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>
