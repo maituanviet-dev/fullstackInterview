@@ -12,7 +12,7 @@ const ListSuggestions: React.FC<Props> = ({ data }) => {
   const navigation = useNavigation();
   const _renderItem = useCallback(({ item, index }) => {
     const onSelectCard = () => {
-      navigation.navigate(Screens.News);
+      navigation.navigate(Screens.News, { item });
     };
     return (
       <CardSuggestion
